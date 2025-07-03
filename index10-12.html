@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение - Вариант №61</title>
+    
+    <!-- Подключение внешнего файла стилей -->
+    <link rel="stylesheet" href="css/style10-12.css">
+    
+    <!-- Подключение внешнего скрипта для Задания 4 -->
+    <script src="sript/script10-12.js"></script>
+    
+    <!-- Скрипт для Задания 1 (размещен в Head) -->
+    <script>
+        function showCurrentYear() {
+            const year = new Date().getFullYear();
+            alert("Текущий год: " + year);
+        }
+    </script>
+</head>
+<body>
+
+    <main>
+        <h1>Тематический контроль знаний. Вариант №61</h1>
+
+        <!-- ======================= ЗАДАНИЕ 1 ======================= -->
+        <div class="task-card">
+            <h2>Задание 1: Работа с объектом Date</h2>
+            <p>Вывести в диалоговое окно номер текущего года.</p>
+            <button onclick="showCurrentYear()">Показать год</button>
+        </div>
+
+        <!-- ======================= ЗАДАНИЕ 2 ======================= -->
+        <div class="task-card">
+            <h2>Задание 2: Работа с операторами циклов</h2>
+            <p>Вывод на экран "Фалейчик Максим" n+5 раз (n=61, итого 66 раз).</p>
+            <div id="task2-output" class="result"></div>
+        </div>
+
+        <!-- ======================= ЗАДАНИЕ 3 ======================= -->
+        <div class="task-card">
+            <h2>Задание 3: Работа с объектом Array</h2>
+            <p>Сформировать массив из 5 целых элементов и найти минимальный.</p>
+            <button onclick="runTask3()">Выполнить для нового массива</button>
+            <div id="task3-output" class="result" style="display:none;"></div>
+        </div>
+        
+        <!-- ======================= ЗАДАНИЕ 4 (ИСПРАВЛЕНО) ======================= -->
+        <div class="task-card">
+            <h2>Задание 4: Работа с объектом Math (Интерактивно)</h2>
+            <p>Введите значение для расчета по формуле `f = (-t + sqrt(7 + t)) / (8 - |t|)`.</p>
+            <div class="form-group">
+                <label for="val_t">Введите t:</label>
+                <input type="number" id="val_t">
+            </div>
+            <button onclick="runTask4()">Рассчитать F</button>
+            <div id="task4-output" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- ======================= ЗАДАНИЕ 5 ======================= -->
+        <div class="task-card">
+            <h2>Задание 5: Работа со строками STRING</h2>
+            <p>Операции со строками: S1 = "Я люблю Беларусь" и S2 = "Я учусь в Политехническом колледже."</p>
+            <button onclick="runTask5()">Обработать строки</button>
+            <div id="task5-output" class="result" style="display:none;"></div>
+        </div>
+    </main>
+
+    <script>
+        // --- Логика для Задания 2 ---
+        (function() {
+            const n = 61;
+            const repetitions = n + 5;
+            const fullName = "Фалейчик Максим";
+            let output = "";
+            for (let i = 0; i < repetitions; i++) {
+                output += (i + 1) + ". " + fullName + "<br>";
+            }
+            document.getElementById('task2-output').innerHTML = output;
+        })();
+
+        // --- Логика для Задания 3 ---
+        function runTask3() {
+            const array = [];
+            for (let i = 0; i < 5; i++) {
+                array.push(Math.floor(Math.random() * 101) - 50);
+            }
+            const minElement = Math.min(...array);
+            let output = "<p><strong>Сгенерированный массив:</strong><br><code>" + array.join(', ') + "</code></p>";
+            output += "<p><strong>Минимальный элемент:</strong> " + minElement + "</p>";
+            const outputDiv = document.getElementById('task3-output');
+            outputDiv.innerHTML = output;
+            outputDiv.style.display = 'block';
+        }
+
+        // --- Интерактивная логика для Задания 4 ---
+        function runTask4() {
+            const t_val = parseFloat(document.getElementById('val_t').value);
+            const outputDiv = document.getElementById('task4-output');
+            if (isNaN(t_val)) {
+                alert("Ошибка: Пожалуйста, введите числовое значение для t.");
+                return;
+            }
+            const result = calculateF(t_val);
+            outputDiv.innerHTML = `При вашем значении t=${t_val} <br><strong>Результат F = ${result}</strong>`;
+            outputDiv.style.display = 'block';
+        }
+
+        // --- Логика для Задания 5 ---
+        function runTask5() {
+            const S1 = "Я люблю Беларусь";
+            const S2 = "Я учусь в Политехническом колледже.";
+            const n = 61;
+            let output = `<p>Исходная S1: <code>${S1}</code><br>Исходная S2: <code>${S2}</code></p><hr>`;
+            output += `<p>1. Длина строки S1: <strong>${S1.length}</strong></p>`;
+            const charIndex = n - 1;
+            let nth_char = S1.charAt(charIndex);
+            let ascii_code;
+            if (nth_char === '') {
+                nth_char = "символ не найден (индекс вне диапазона)";
+                ascii_code = "неприменимо";
+            } else {
+                ascii_code = S1.charCodeAt(charIndex);
+            }
+            output += `<p>2. 61-й символ в S1: <strong>${nth_char}</strong><br>
+                           ASCII-код этого символа: <strong>${ascii_code}</strong></p>`;
+            const s2Replaced = S2.replace(/о/g, 'а');
+            output += `<p>3. Строка S2 после замены всех 'о' на 'а':<br><code>${s2Replaced}</code></p>`;
+            const outputDiv = document.getElementById('task5-output');
+            outputDiv.innerHTML = output;
+            outputDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

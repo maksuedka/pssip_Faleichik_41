@@ -1,0 +1,323 @@
+body {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    background: linear-gradient(135deg, #000000, #1a0000);
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+header, main, footer {
+    padding: 20px 40px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #000, #330000);
+    border-bottom: 4px double red;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    min-height: 55vh;
+}
+
+/* Эффект наклона красного света справа */
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 200px;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.1);
+    transform: skewX(-20deg);
+}
+
+header h1 {
+    color: red;
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Анимация плавного появления заголовка */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+header p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: red;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+/* Подчеркивание при наведении на ссылки */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+section {
+    border-bottom: 1px solid red;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px red;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект увеличения и свечения при наведении */
+section:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 15px red, inset 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+form, input[type="text"], input[type="email"], input[type="tel"], textarea, input[type="submit"], input[type="reset"] {
+    border-radius: 0;
+}
+
+h2 {
+    color: red;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px black;
+}
+
+ul, ol {
+    padding-left: 25px;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+img {
+    border: none;
+    max-width: 100%; /* Поддержка адаптивности */
+    height: auto;
+    width: 37%; /* Увеличение ширины изображения */
+    display: block; /* Блочный элемент */
+    margin: 0 auto; /* Центрирование изображения */
+}
+
+form {
+    background-color: #111;
+    padding: 25px;
+    border: 2px dashed red;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: 1.5em;
+    color: red;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    border: 1px solid red;
+    color: #fff;
+    transition: border-color 0.3s;
+}
+
+/* Подсветка полей ввода при фокусе */
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+    border-color: white;
+    outline: none;
+}
+
+input[type="submit"], input[type="reset"] {
+    background-color: red;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Изменение цвета кнопок при наведении */
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #fff;
+    color: red;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+    position: relative;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: linear-gradient(90deg, #1a0000, #000);
+    text-align: center;
+    padding: 30px;
+    font-size: 1em;
+    border-top: 2px solid red;
+    color: #888;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #111;
+    box-shadow: 0 0 10px red;
+    border: 1px solid red;
+    color: #fff;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid red;
+}
+
+.video {
+    margin-top: 20px;
+    display: block;
+    filter: drop-shadow(0 0 10px red);
+}
+
+/* Позиционирование аудио плеера в правом верхнем углу */
+.audio-header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+}
+
+.audio-header audio {
+    width: 300px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Сброс стилей для аудио элемента */
+audio {
+    border: none;
+    outline: none;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #222;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: #ccc;
+}
+
+/* Стили для новых элементов контактной формы */
+
+form select, form input[type="checkbox"] {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    border: 1px solid red;
+    color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+/* Подсветка селекта при фокусе */
+form select:focus {
+    border-color: white;
+    outline: none;
+}
+
+form .form-group > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+form .form-group > div label {
+    margin: 0;
+    color: #ccc;
+    cursor: pointer;
+}
+
+form .form-group > div input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript: практические примеры</title>
+  <link rel="stylesheet" href="css/style9.css"/>
+
+  <!-- Способ 1: Внешние скрипты в <head> -->
+  <script src="script/script1.js"></script> <!-- Скрипт 1: проверка возраста -->
+  <script src="script/script2.js"></script> <!-- Скрипт 2: выбор фрукта -->
+  <script src="script/script4.js"></script> <!-- Скрипт 4: while, do..while -->
+  <script src="script/script6.js"></script> <!-- Скрипт 6: confirm -->
+  <script src="script/script7.js"></script> <!-- Скрипт 7: prompt -->
+
+  <!-- Способ 2: Внешние скрипты перед закрывающим </body> -->
+  <!-- Скрипт 3: цикл for - подключение через ссылку -->
+
+  <!-- Способ 3: Встроенные скрипты -->
+  <script>
+    function showAlert() {
+      alert("Внимание! Это сообщение alert.");
+    }
+
+    function openUrlScheme() {
+      const email = "test@example.com";
+      const subject = encodeURIComponent("Здравствуйте");
+      const body = encodeURIComponent("Это пример письма");
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+  <!-- Способ 4: JS в атрибуте onclick -->
+  <!-- Пример Скрипт 4 -->
+
+</head>
+<body>
+  <h1>JavaScript: практические примеры</h1>
+
+  <!-- Скрипт 1 -->
+  <div class="script-block">
+    <h2>Скрипт 1 — Проверка возраста пользователя (if, return)</h2>
+    <input type="number" id="ageInput" placeholder="Укажите ваш возраст" />
+    <button onclick="checkAge()">Проверить возраст</button>
+    <div id="result1" class="result"></div>
+  </div>
+
+  <!-- Скрипт 2 -->
+  <div class="script-block">
+    <h2>Скрипт 2 — Информация о выбранном фрукте (switch)</h2>
+    <select id="fruitSelect">
+      <option value="apple">Яблоко</option>
+      <option value="banana">Банан</option>
+      <option value="orange">Апельсин</option>
+    </select>
+    <button onclick="describeFruit()">Показать информацию</button>
+    <div id="result2" class="result"></div>
+  </div>
+
+  <!-- Скрипт 3 -->
+  <div class="script-block">
+    <h2>Скрипт 3 — Цикл с пропуском значения (for, continue)</h2>
+    <a href="#" onclick="loadAndRunLoopNumbers(); return false;">Запустить цикл (ссылка)</a>
+    <div id="result3" class="result"></div>
+  </div>
+
+  <script>
+    function loadAndRunLoopNumbers() {
+      if (typeof loopNumbers === 'function') {
+        loopNumbers();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'script/script3.js';
+        script.onload = function() {
+          loopNumbers();
+        };
+        document.body.appendChild(script);
+      }
+    }
+  </script>
+
+  <!-- Скрипт 4 -->
+  <div class="script-block">
+    <h2>Скрипт 4 — Циклы while и do..while с досрочным выходом (break)</h2>
+    <button onclick="startCounter()">Начать счёт</button>
+    <div id="result4" class="result"></div>
+  </div>
+
+  <!-- Скрипт 5 -->
+  <div class="script-block">
+    <h2>Скрипт 5 — Окно alert и отправка email</h2>
+    <button onclick="showAlert()">Показать сообщение</button>
+  </div>
+
+  <!-- Отправка письма -->
+  <div class="script-block">
+    <h2>Отправка письма</h2>
+    <a href="#" onclick="openUrlScheme(); return false;">Отправить письмо</a>
+  </div>
+
+  <!-- Скрипт 6 -->
+  <div class="script-block">
+    <h2>Скрипт 6 — Подтверждение действия (confirm)</h2>
+    <button onclick="showConfirm()">Пожалуйста, подтвердите</button>
+  </div>
+
+  <!-- Скрипт 7 -->
+  <div class="script-block">
+    <h2>Скрипт 7 — Ввод имени пользователя (prompt)</h2>
+    <button onclick="promptName()">Введите имя</button>
+    <div id="result7" class="result"></div>
+  </div>
+
+</body>
+</html>
